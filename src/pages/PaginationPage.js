@@ -17,8 +17,7 @@ function PaginationPage() {
   const [offsetValue, setOffsetValue] = useState(0);
 
   let url =
-    "http://api.mediastack.com/v1/news?access_key=" +
-    process.env.REACT_APP_API_KEY +
+    "http://api.mediastack.com/v1/news?access_key=4c41ba4d6d01027727f13c48990408e5"  +
     "&sort=" +
     sorting +
     "&categories=" +
