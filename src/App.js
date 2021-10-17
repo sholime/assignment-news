@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+
+import HomePage from "./pages/HomePage";
+import PaginationPage from "./pages/PaginationPage";
+import InfiniteScrollPage from "./pages/InfiniteScrollPage";
+import Navigation from "./components/layout/Navigation";
+
+import "./Styles/App.scss";
+
+
+// import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navigation/>
+      <Switch>
+        <Route path="/" exact>
+          <HomePage />
+        </Route>
+        <Route path="/pagination">
+          <PaginationPage />
+        </Route>
+        <Route path="/infinite">
+          <InfiniteScrollPage />
+        </Route>
+      </Switch>
     </div>
   );
 }

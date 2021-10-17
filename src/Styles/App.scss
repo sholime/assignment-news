@@ -1,0 +1,104 @@
+@import "../Styles/Variables/Variables.scss";
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    color: $bluecolor;
+  }
+}
+
+.pagination {
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  // padding: 0;
+  display: flex;
+  column-gap: 2px;
+
+  li {
+    cursor: pointer;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid $whitecolor;
+    display: flex;
+    justify-content: center;
+    font-size: larger;
+    color: $blackcolor;
+  }
+
+  li:hover {
+    border: 2px solid $bluecolor;
+  }
+  .active {
+    color: $whitecolor;
+    background-color: $bluecolor;
+  }
+}
+
+.articles {
+  display: flex;
+  flex-flow: column wrap;
+  margin-bottom: 1rem;
+}
+
+.navigation {
+  width: 95%;
+  padding-top: 1rem;
+  padding-bottom: 1.3rem;
+  margin: 0.5rem auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  background-color: $blackcolor;
+
+  .form {
+    display: flex;
+    flex-direction: row;
+    margin: 0 1rem;
+
+    input {
+      width: 100%;
+      padding: 10px 35px 10px 15px;
+      border: none;
+      outline: none;
+      font-size: larger;
+    }
+
+    button {
+      background: transparent;
+      border: none;
+      outline: none;
+      margin-left: -33px;
+      cursor: pointer;
+      padding-top: 5px;
+
+      img {
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .dropdowns {
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+  }
+
+  label {
+    font-size: smaller;
+    color: $whitecolor;
+    font-weight: 600;
+  }
+
+  select {
+    height: 100%;
+    cursor: pointer;
+  }
+}
+

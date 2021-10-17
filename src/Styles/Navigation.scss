@@ -1,0 +1,42 @@
+@import "../Styles/Variables/Variables.scss";
+
+.Navigation {
+    width:100%;
+    height: 5rem;
+    padding: 0;
+    background-color: $blackcolor;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+
+    
+
+    .Home {
+        color: $whitecolor;
+        font-size: 2rem;
+        text-decoration: none;
+    }
+
+    .Home:hover {
+        font-size: 2.2rem;
+    }
+
+    .Infinite {
+        color: $whitecolor;
+        text-decoration: none;
+    }
+
+    .Infinite:hover {
+        font-size: larger;
+    }
+
+    .Pagination {
+        color: $whitecolor;
+        text-decoration: none;
+    }
+
+    .Pagination:hover {
+        font-size: larger;
+    }
+
+}
