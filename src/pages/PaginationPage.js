@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import ReactPaginate from "react-paginate";
 
 import Card from "../components/UI/Card";
-import DummyData from "../SportsDummyData";
 
 
 function PaginationPage() {
@@ -37,28 +36,21 @@ function PaginationPage() {
 
   useEffect(() => {
     const getArticles = async () => {
-      // const res = await fetch(url);
-      // if (res.status >= 200 && res.status <= 299) {
-      //   const data = await res.json();
-      //   setPageCount(Math.ceil(data.pagination.total / 20));
-      //   setArticles(data);
-      //   setLoaded(true);
-      //   console.log(url);
-      //   console.log(articles);
-      // } else {
-      //   alert(res.statusText)
-      // }
-      const data = DummyData();
-      setPageCount(Math.ceil(data.pagination.total / 20));
-      setArticles(data);
-      setLoaded(true);
+      const res = await fetch(url);
+      if (res.status >= 200 && res.status <= 299) {
+        const data = await res.json();
+        setPageCount(Math.ceil(data.pagination.total / limit));
+        setArticles(data);
+        setLoaded(true);
+      } else {
+        alert(res.statusText)
+      }
     };
 
     getArticles();
-  }, [sorting, categories, keywords, offsetValue, url]);
+  }, [sorting, categories, keywords, offsetValue]);
 
   const handlePageClick = (data) => {
-    console.log(data.selected);
     setOffsetValue(data.selected * limit);
   };
 
