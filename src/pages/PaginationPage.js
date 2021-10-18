@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import ReactPaginate from "react-paginate";
 
 import Card from "../components/UI/Card";
-
+import DummyData from "../DummyData";
 
 function PaginationPage() {
   let limit = 20;
@@ -17,7 +17,7 @@ function PaginationPage() {
   const [offsetValue, setOffsetValue] = useState(0);
 
   let url =
-    "http://api.mediastack.com/v1/news?access_key=4c41ba4d6d01027727f13c48990408e5"  +
+    "http://api.mediastack.com/v1/news?access_key=4c41ba4d6d01027727f13c48990408e5" +
     "&sort=" +
     sorting +
     "&categories=" +
@@ -35,15 +35,19 @@ function PaginationPage() {
 
   useEffect(() => {
     const getArticles = async () => {
-      const res = await fetch(url);
-      if (res.status >= 200 && res.status <= 299) {
-        const data = await res.json();
-        setPageCount(Math.ceil(data.pagination.total / limit));
-        setArticles(data);
-        setLoaded(true);
-      } else {
-        alert(res.statusText)
-      }
+      // const res = await fetch(url);
+      // if (res.status >= 200 && res.status <= 299) {
+      //   const data = await res.json();
+      //   setPageCount(Math.ceil(data.pagination.total / limit));
+      //   setArticles(data);
+      //   setLoaded(true);
+      // } else {
+      //   alert(res.statusText)
+      // }
+      const data = DummyData();
+      setPageCount(Math.ceil(data.pagination.total / limit));
+      setArticles(data);
+      setLoaded(true);
     };
 
     getArticles();
@@ -78,7 +82,7 @@ function PaginationPage() {
             <form className="form" onSubmit={submitHandler}>
               <input type="text" id="keywords" ref={keywordsInputRef} />
               <button type="submit">
-                <img src="./search.png" alt="search_icon"/>
+                <img src="./search.png" alt="search_icon" />
               </button>
             </form>
             <div className="dropdowns">
