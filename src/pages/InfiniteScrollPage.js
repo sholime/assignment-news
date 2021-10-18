@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback } from "react";
 
 import GetArticles from "../components/UI/GetArticles";
-import Card from "../components/UI/Card";
+import Card from "../components/layout/Card";
 import Control from "../components/layout/Control";
 
 export default function InfiniteScrollPage() {

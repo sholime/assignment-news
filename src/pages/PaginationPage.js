@@ -1,9 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
-import Control from "../components/layout/Control";
 
-import Card from "../components/UI/Card";
-import DummyData from "../DummyData";
+import Control from "../components/layout/Control";
+import Card from "../components/layout/Card";
 
 function PaginationPage() {
   let limit = 20;
@@ -35,20 +34,15 @@ function PaginationPage() {
 
   useEffect(() => {
     const getArticles = async () => {
-      // const res = await fetch(url);
-      // if (res.status >= 200 && res.status <= 299) {
-      //   const data = await res.json();
-      //   setPageCount(Math.ceil(data.pagination.total / limit));
-      //   setArticles(data);
-      //   setLoaded(true);
-      // } else {
-      //   alert(res.statusText)
-      // }
-      const data = DummyData();
-      setPageCount(Math.ceil(data.pagination.total / limit));
-      setArticles(data);
-      setLoaded(true);
-      console.log(url);
+      const res = await fetch(url);
+      if (res.status >= 200 && res.status <= 299) {
+        const data = await res.json();
+        setPageCount(Math.ceil(data.pagination.total / limit));
+        setArticles(data);
+        setLoaded(true);
+      } else {
+        alert(res.statusText)
+      }
     };
 
     getArticles();
@@ -63,7 +57,7 @@ function PaginationPage() {
       <Control
         setCategories={setCategories}
         setSorting={setSorting}
-        setKeywords={setQuery}
+        setQuery={setQuery}
         setOffsetValue={setOffsetValue}
       />
       <div>
