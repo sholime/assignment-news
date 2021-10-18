@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import ReactPaginate from "react-paginate";
+import Control from "../components/layout/Control";
 
 import Card from "../components/UI/Card";
 import DummyData from "../DummyData";
@@ -12,8 +13,7 @@ function PaginationPage() {
   const [pageCount, setPageCount] = useState(0);
   const [sorting, setSorting] = useState("published_desc");
   const [categories, setCategories] = useState("sports,technology");
-  const keywordsInputRef = useRef();
-  const [keywords, setKeywords] = useState("");
+  const [query, setQuery] = useState("");
   const [offsetValue, setOffsetValue] = useState(0);
 
   let url =
@@ -25,8 +25,8 @@ function PaginationPage() {
     "&languages=en&limit=" +
     limit;
 
-  if (keywords) {
-    url += "&keywords=" + encodeURIComponent(keywords);
+  if (query) {
+    url += "&keywords=" + encodeURIComponent(query);
   }
 
   if (offsetValue !== 0) {
@@ -48,57 +48,25 @@ function PaginationPage() {
       setPageCount(Math.ceil(data.pagination.total / limit));
       setArticles(data);
       setLoaded(true);
+      console.log(url);
     };
 
     getArticles();
-  }, [sorting, categories, keywords, offsetValue]);
+  }, [sorting, categories, query, offsetValue]);
 
   const handlePageClick = (data) => {
     setOffsetValue(data.selected * limit);
   };
 
-  function submitHandler(event) {
-    event.preventDefault();
-
-    setKeywords(keywordsInputRef.current.value);
-  }
   return (
     <div className="App">
+      <Control
+        setCategories={setCategories}
+        setSorting={setSorting}
+        setKeywords={setQuery}
+        setOffsetValue={setOffsetValue}
+      />
       <div>
-        <div>
-          <div className="navigation">
-            <div className="dropdowns">
-              <select
-                id="categories"
-                name="categories"
-                className="dropdown"
-                onChange={(e) => setCategories(e.target.value)}
-              >
-                <option value="sports,technology">Category(All)</option>
-                <option value="sports">Sports</option>
-                <option value="technology">Technology</option>
-              </select>
-            </div>
-            <form className="form" onSubmit={submitHandler}>
-              <input type="text" id="keywords" ref={keywordsInputRef} />
-              <button type="submit">
-                <img src="./search.png" alt="search_icon" />
-              </button>
-            </form>
-            <div className="dropdowns">
-              <select
-                id="sort"
-                name="sort"
-                className="dropdown"
-                onChange={(e) => setSorting(e.target.value)}
-              >
-                <option value="published_desc">Sort(newest)</option>
-                <option value="published_asc">Sort(oldest)</option>
-                <option value="popularity">Popular</option>
-              </select>
-            </div>
-          </div>
-        </div>
         <ReactPaginate
           previousLabel={"<"}
           nextLabel={">"}
