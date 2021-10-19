@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 
-import Control from "../components/layout/Control";
-import Card from "../components/layout/Card";
+import Control from "../components/UI/Control";
+import Card from "../components/UI/Card";
 
 function PaginationPage() {
   let limit = 20;

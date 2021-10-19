@@ -1,8 +1,8 @@
 import { useState, useRef, useCallback } from "react";
 
-import GetArticles from "../components/UI/GetArticles";
-import Card from "../components/layout/Card";
-import Control from "../components/layout/Control";
+import GetArticles from "../components/logic/GetArticles";
+import Card from "../components/UI/Card";
+import Control from "../components/UI/Control";
 
 export default function InfiniteScrollPage() {
   const articlesPerPage = 100;
