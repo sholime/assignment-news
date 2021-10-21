@@ -21,7 +21,7 @@ export default function GetArticles(query, categories, sorting, offsetValue, art
       method: "GET",
       url: "http://api.mediastack.com/v1/news",
       params: {
-        access_key: "4c41ba4d6d01027727f13c48990408e5",
+        access_key: "70f8a920cee2b4ad5c1bf50a2791adf1",
         languages: "en",
         limit: articlesPerPage,
         offset: offsetValue,
